@@ -19,12 +19,12 @@ dbConection();
 //console.log(process.env);
 
 //Rutas de la API
-app.use('/api/usuarios', require('./routes/usuarios.routes'));
-app.use('/api/proyectos', require('./routes/proyectos.routes'));
-app.use('/api/investigadores',require('./routes/investigadores.routes'));
+app.use('/api/consumidores', require('./routes/consumidores.routes'));
 app.use('/api/login', require('./routes/auth.routes'));
-app.use('/api/todo', require('./routes/busquedas.routes'));
-app.use('/api/uploads', require('./routes/uploads.routes'));
+// app.use('/api/proyectos', require('./routes/proyectos.routes'));
+// app.use('/api/investigadores',require('./routes/investigadores.routes'));
+// app.use('/api/todo', require('./routes/busquedas.routes'));
+// app.use('/api/uploads', require('./routes/uploads.routes'));
 
 //Para levantar el servidor
 app.listen(process.env.PORT, ()=>{

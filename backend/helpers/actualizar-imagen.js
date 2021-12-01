@@ -1,5 +1,5 @@
 const fs = require('fs'); //para leer archivos y carpetas del filesystem
-const Usuario = require('../models/usuario.model');
+const Usuario = require('../models/consumidor.model');
 const Proyecto = require('../models/proyecto.model');
 const Investigador = require('../models/investigador.model');
 

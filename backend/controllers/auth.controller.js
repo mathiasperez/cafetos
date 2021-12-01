@@ -1,7 +1,7 @@
 const { response } = require("express");
 const bcrypt = require('bcryptjs');
 
-const Usuario = require ('../models/usuario.model');
+const Consumidor = require ('../models/consumidor.model');
 const { generarJWT } =  require('../helpers/jwt')
 
 
@@ -10,28 +10,27 @@ const login = async(req, res= response)=> {
 
     try {
         
-        // Verificar al usuario por su email
-        const usuarioDB = await Usuario.findOne({ email });
+        // Verificar al consumidor por su email
+        const consumidorDB = await Consumidor.findOne({ email });
 
-        if ( !usuarioDB ) {
+        if ( !consumidorDB ) {
             return res.status(404).json({
                 ok: false,
                 msg: 'Email no encontrado'
-                //considerar la utilizacion de este mensaje
             });
         }
 
-        // Verificar contraseña
-        const validPassword = bcrypt.compareSync( password, usuarioDB.password );
+        // Verificar password
+        const validPassword = bcrypt.compareSync( password, consumidorDB.password );
         if ( !validPassword ) {
             return res.status(400).json({
                 ok: false,
-                msg: 'Contraseña no válida'
+                msg: 'Invalid Password'
             });
         }
 
         // Generar el TOKEN - JWT
-        const token = await generarJWT( usuarioDB.id );
+        const token = await generarJWT( consumidorDB.id );
 
         res.json({
             ok: true,
@@ -42,7 +41,7 @@ const login = async(req, res= response)=> {
         console.log(error);
         res.status(500).json({
             ok: false,
-            msg: 'Hable con el administrador'
+            msg: 'Hablar con el administrador'
         })
     }
 

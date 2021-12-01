@@ -2,7 +2,7 @@
 
 const { response } = require("express")
 
-const Usuario = require('../models/usuario.model');
+const Usuario = require('../models/consumidor.model');
 const Investigador = require('../models/investigador.model');
 const Proyecto = require('../models/proyecto.model');
 
